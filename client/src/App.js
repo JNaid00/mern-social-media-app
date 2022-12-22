@@ -4,7 +4,8 @@ import LoginPage from "scenes/loginPage";
 import ProfilePage from "scenes/profilePage";
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
+    <div className="text-3xl font-bold underline">
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginPage />} />
@@ -12,7 +13,7 @@ function App() {
           <Route path="/profile/:userId" element={<ProfilePage />} />
         </Routes>
       </BrowserRouter>
-    </h1>
+    </div>
   );
 }
 
