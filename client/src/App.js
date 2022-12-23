@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import HomePage from "scenes/homePage";
 import LoginPage from "scenes/loginPage";
 import ProfilePage from "scenes/profilePage";
+import Navbar from "scenes/navbar";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { CssBaseline, CssBaselinem, ThemeProvider } from "@mui/material";
@@ -11,10 +12,11 @@ function App() {
   const mode = useSelector((state) => state.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
   return (
-    <div className="text-3xl font-bold underline">
+    <div>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline/>
+          <Navbar/>
           <Routes>
             <Route path="/" element={<LoginPage />} />
             <Route path="/home" element={<HomePage />} />
