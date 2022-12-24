@@ -40,7 +40,7 @@ const Navbar = () => {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
   const fullName = user ? `${user.firstName} ${user.lastName}` : "No name";
-  console.log(background);
+  console.log(alt);
   //0A0A0A
   //F6F6F6
   return (
@@ -122,7 +122,7 @@ const Navbar = () => {
 
       {!isNonMobileScreens && isMobileMenuToggled && (
         <div
-          className={`fixed right-0 bottom-0 h-full z-10 max-w-[500px] min-w-[300px] rounded-3xl ${theme.palette.mode === "dark" ? "bg-[#0A0A0A]" : "bg-[#F6F6F6]"}`}
+          className={`fixed right-0 bottom-0 h-full z-10 max-w-[500px] min-w-[300px] rounded-3xl ${theme.palette.mode === "dark" ? "bg-dark-background" : "bg-light-background"}`}
         >
           {/* Close icon */}
           <div className="flex justify-end p-4">
