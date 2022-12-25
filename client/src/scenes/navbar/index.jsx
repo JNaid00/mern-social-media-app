@@ -40,6 +40,7 @@ const Navbar = () => {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
   const fullName = user ? `${user.firstName} ${user.lastName}` : "No name";
+
   console.log(alt);
   //0A0A0A
   //F6F6F6
@@ -122,7 +123,11 @@ const Navbar = () => {
 
       {!isNonMobileScreens && isMobileMenuToggled && (
         <div
-          className={`fixed right-0 bottom-0 h-full z-10 max-w-[500px] min-w-[300px] rounded-3xl ${theme.palette.mode === "dark" ? "bg-dark-background" : "bg-light-background"}`}
+          className={`fixed right-0 bottom-0 h-full z-10 max-w-[500px] min-w-[300px] rounded-3xl ${
+            theme.palette.mode === "dark"
+              ? "bg-dark-background"
+              : "bg-light-background"
+          }`}
         >
           {/* Close icon */}
           <div className="flex justify-end p-4">
@@ -135,7 +140,10 @@ const Navbar = () => {
           {/* Menu Items */}
 
           <div className="flex flex-col justify-center items-center gap-12">
-            <IconButton onClick={() => dispatch(setMode())} sx={{fontSize: "25px"}}>
+            <IconButton
+              onClick={() => dispatch(setMode())}
+              sx={{ fontSize: "25px" }}
+            >
               {theme.palette.mode === "dark" ? (
                 <DarkMode sx={{ fontSize: "25px" }} />
               ) : (
@@ -167,7 +175,13 @@ const Navbar = () => {
                 <MenuItem value={fullName}>
                   <Typography>{fullName}</Typography>
                 </MenuItem>
-                <MenuItem onClick={() => dispatch(setLogout())}>
+                <MenuItem
+                  onClick={() => {
+                    dispatch(setLogout());
+                    navigate("/");
+                    console.log("Trying to log out")
+                  }}
+                >
                   Log out
                 </MenuItem>
               </Select>

@@ -10,7 +10,7 @@ import {
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "state";
 import Dropzone from "react-dropzone";
@@ -45,7 +45,7 @@ const inivalueLogin = {
   password: "",
 };
 const Form = () => {
-  const [pageType, setpageType] = useState("login");
+  const [pageType, setpageType] = useState("register");
   const { palette } = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -53,7 +53,52 @@ const Form = () => {
 
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
-  const handleFormSubmit = async (values, onSubmitProps) => {};
+  const register = async (values, onSubmitProps) => {
+    const formData = new FormData();
+    for (let value in values) {
+      formData.append(value, values[value]);
+    }
+    formData.append("picturePath", values.picture.name);
+
+    const savedUserRepsonse = await fetch(
+      "http://localhost:3001/auth/register",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    const savedUser = await savedUserRepsonse.json();
+    if (savedUser) {
+      setpageType("login");
+    }
+  };
+  const login = async (values, onSubmitProps) => {
+    const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", 
+       
+      },
+      body: JSON.stringify(values),
+    });
+
+    const loggedIn = await loggedInResponse.json();
+
+    onSubmitProps.resetForm();
+    if (loggedIn) {
+      dispatch(
+        setLogin({
+          user: loggedIn.user,
+          token: loggedIn.token,
+        })
+      );
+      navigate("/home");
+    }
+  };
+  const handleFormSubmit = async (values, onSubmitProps) => {
+    if (isLogin) await login(values, onSubmitProps);
+    if (isRegister) await register(values, onSubmitProps);
+  };
   return (
     <Formik
       onSubmit={handleFormSubmit}
@@ -95,16 +140,6 @@ const Form = () => {
                   error={Boolean(touched.lastName) && Boolean(errors.lastName)}
                   helperText={touched.lastName && errors.lastName}
                   sx={{ gridColumn: isNonMobileScreens ? "span 2" : "span 4" }}
-                />
-                <TextField
-                  label="Email"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.email}
-                  name="email"
-                  error={Boolean(touched.email) && Boolean(errors.email)}
-                  helperText={touched.email && errors.email}
-                  sx={{ gridColumn: "span 4" }}
                 />
                 <TextField
                   label="Location"
@@ -169,6 +204,7 @@ const Form = () => {
               sx={{ gridColumn: "span 4" }}
             />
             <TextField
+              type="password"
               label="Password"
               onBlur={handleBlur}
               onChange={handleChange}
