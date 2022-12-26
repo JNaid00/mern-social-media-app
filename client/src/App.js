@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { CssBaseline, CssBaselinem, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "theme";
+// require('dotenv').config()
 function App() {
   const mode = useSelector((state) => state.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
@@ -35,3 +36,4 @@ function App() {
 }
 
 export default App;
+ 
