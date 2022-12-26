@@ -2,6 +2,7 @@ import Post from "../models/Post.js";
 import User from "../models/User.js";
 
 export const createPost = async (req, res) => {
+  console.log("Creating a post")
   try {
     const { userId, description, picturePath } = req.body;
     const user = await User.findById(userId);
@@ -17,9 +18,10 @@ export const createPost = async (req, res) => {
       likes: {},
       comments: [],
     });
-
     await newPost.save();
+    console.log("Waiting")
     const post = await Post.find();
+    console.log("About to")
     res.status(201).json(post);
   } catch (err) {
     res.status(409).json({ message: err.message });
