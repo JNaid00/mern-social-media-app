@@ -50,7 +50,7 @@ const UserWidget = ({ userId, picturePath }) => {
   } = user;
   return (
     <WidgetWrapper>
-      <div className="gap-2 pb-[1.1rem]">
+      <div className="flex justify-between items-center gap-2 pb-[1.1rem]">
         <div className="flex justify-between items-center gap-4">
           <UserImage image={picturePath} />
           <div>
@@ -69,9 +69,10 @@ const UserWidget = ({ userId, picturePath }) => {
             </Typography>
             <Typography color={medium}>{friends.length} friends</Typography>
           </div>
-          <ManageAccountsOutlined />
+       
         </div>
-
+        <ManageAccountsOutlined />
+        </div>
         <Divider />
         <div className="py-4">
           <div className="flex items-center gap-4 mb-2">
@@ -132,7 +133,7 @@ const UserWidget = ({ userId, picturePath }) => {
             <EditOutlined sx={{ color: main }} />
           </div>
         </div>
-      </div>
+     
     </WidgetWrapper>
   );
 };
