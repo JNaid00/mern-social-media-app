@@ -7,7 +7,7 @@ import {
   LocationOnOutlined,
   WorkOutlineOutlined,
 } from "@mui/icons-material";
-import { Typography, Divider, useTheme } from "@mui/material";
+import { Typography, Divider, useTheme, IconButton } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -69,71 +69,71 @@ const UserWidget = ({ userId, picturePath }) => {
             </Typography>
             <Typography color={medium}>{friends.length} friends</Typography>
           </div>
-       
         </div>
-        <ManageAccountsOutlined />
+        <IconButton>
+          <ManageAccountsOutlined />
+        </IconButton>
+      </div>
+      <Divider />
+      <div className="py-4">
+        <div className="flex items-center gap-4 mb-2">
+          <LocationOnOutlined fontSize="large" sx={{ color: main }} />
+          <Typography color={medium}>{location}</Typography>
         </div>
-        <Divider />
-        <div className="py-4">
-          <div className="flex items-center gap-4 mb-2">
-            <LocationOnOutlined fontSize="large" sx={{ color: main }} />
-            <Typography color={medium}>{location}</Typography>
-          </div>
-          <div className="flex items-center gap-4">
-            <WorkOutlineOutlined fontSize="large" sx={{ color: main }} />
-            <Typography color={medium}>{occupation}</Typography>
-          </div>
+        <div className="flex items-center gap-4">
+          <WorkOutlineOutlined fontSize="large" sx={{ color: main }} />
+          <Typography color={medium}>{occupation}</Typography>
         </div>
+      </div>
 
-        <Divider />
-        <div className="py-4">
-          <div className="flex justify-between items-center mb-2 ">
-            <Typography color={medium}>Who's viewed your profile: </Typography>
-            <Typography color={main} fontWeight="500">
-              {viewedProfile}
-            </Typography>
-          </div>
-          <div className="flex justify-between items-center mb-2 ">
-            <Typography color={medium}>Impressions of your post:</Typography>
-            <Typography color={main} fontWeight="500">
-              {impressions}
-            </Typography>
-          </div>
-        </div>
-
-        <Divider />
-        <div className="py-4">
-          <Typography fontSize="1rem" color={main} fontWeight="500" mb="1rem">
-            Social Profiles
+      <Divider />
+      <div className="py-4">
+        <div className="flex justify-between items-center mb-2 ">
+          <Typography color={medium}>Who's viewed your profile: </Typography>
+          <Typography color={main} fontWeight="500">
+            {viewedProfile}
           </Typography>
-          <div className="flex justify-between items-center gap-4 mb-2 ">
-            <div className="flex justify-between items-center gap-4">
-              <img src="../assets/twitter.png" alt="twitter"></img>
-              <div>
-                <Typography color={main} fontWeight="500">
-                  Twiiter
-                </Typography>
-                <Typography color={medium}>Social Network</Typography>
-              </div>
-            </div>
-
-            <EditOutlined sx={{ color: main }} />
-          </div>
-          <div className="flex justify-between items-center gap-4 mb-2 ">
-            <div className="flex justify-between items-center gap-4">
-              <img src="../assets/linkedin.png" alt="linkedin"></img>
-              <div>
-                <Typography color={main} fontWeight="500">
-                Linkedin
-                </Typography>
-                <Typography color={medium}>Network Platform</Typography>
-              </div>
-            </div>
-
-            <EditOutlined sx={{ color: main }} />
-          </div>
         </div>
-     
+        <div className="flex justify-between items-center mb-2 ">
+          <Typography color={medium}>Impressions of your post:</Typography>
+          <Typography color={main} fontWeight="500">
+            {impressions}
+          </Typography>
+        </div>
+      </div>
+
+      <Divider />
+      <div className="py-4">
+        <Typography fontSize="1rem" color={main} fontWeight="500" mb="1rem">
+          Social Profiles
+        </Typography>
+        <div className="flex justify-between items-center gap-4 mb-2 ">
+          <div className="flex justify-between items-center gap-4">
+            <img src="../assets/twitter.png" alt="twitter"></img>
+            <div>
+              <Typography color={main} fontWeight="500">
+                Twiiter
+              </Typography>
+              <Typography color={medium}>Social Network</Typography>
+            </div>
+          </div>
+
+          <EditOutlined sx={{ color: main }} />
+        </div>
+        <div className="flex justify-between items-center gap-4 mb-2 ">
+          <div className="flex justify-between items-center gap-4">
+            <img src="../assets/linkedin.png" alt="linkedin"></img>
+            <div>
+              <Typography color={main} fontWeight="500">
+                Linkedin
+              </Typography>
+              <Typography color={medium}>Network Platform</Typography>
+            </div>
+          </div>
+
+          <EditOutlined sx={{ color: main }} />
+        </div>
+      </div>
     </WidgetWrapper>
   );
 };
