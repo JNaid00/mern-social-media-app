@@ -41,7 +41,7 @@ const Navbar = () => {
   const alt = theme.palette.background.alt;
   const fullName = user ? `${user.firstName} ${user.lastName}` : "No name";
 
-  console.log(alt);
+  // console.log(alt);
   //0A0A0A
   //F6F6F6
   return (

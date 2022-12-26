@@ -1,13 +1,16 @@
-import { useTheme } from "@mui/material";
+import {  useTheme } from "@mui/material";
 
-const WidgetWrapper = () => {
+const WidgetWrapper = (props) => {
+ 
   const { palette } = useTheme();
   return (
     <div
-      className={`px-7 pt-7 pb-2${
+      className={`px-7 pt-7 pb-2 ${
         palette.mode === "dark" ? "bg-dark-alt" : "bg-light-alt"
       } rounded-xl`}
-    ></div>
+    >
+      {props.children}
+    </div>
   );
 };
 
