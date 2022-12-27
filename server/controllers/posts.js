@@ -2,7 +2,7 @@ import Post from "../models/Post.js";
 import User from "../models/User.js";
 
 export const createPost = async (req, res) => {
-  console.log("Creating a post")
+  console.log("Why is this executing", req.body)
   try {
     const { userId, description, picturePath } = req.body;
     const user = await User.findById(userId);
@@ -29,6 +29,8 @@ export const createPost = async (req, res) => {
 };
 /*Get all posts */
 export const getFeedPosts = async (req, res) => {
+
+  console.log("Trying to get all the posts")
   try {
     const post = await Post.find();
     res.status(201).json(post);

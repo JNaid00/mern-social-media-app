@@ -59,7 +59,7 @@ const MyPostWidget = ({ picturePath }) => {
   const border = "border-2 border-[" + medium + "]";
   return (
     <WidgetWrapper>
-      <div className="flex justify-between items-center gap-6 ">
+      <div className="flex justify-between items-center gap-6">
         <UserImage image={picturePath} />
         <InputBase
           placeholder="What is in your mind"
