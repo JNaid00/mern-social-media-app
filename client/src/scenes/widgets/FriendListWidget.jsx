@@ -31,7 +31,7 @@ const FriendListWidget = ({ userId }) => {
     getAllFriends();
   }, []);
 
-    console.log(friends);
+  console.log(friends);
   return (
     <WidgetWrapper>
       <Typography
