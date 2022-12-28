@@ -37,7 +37,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     }
   }, []);
 
-  console.log(posts);
+  // console.log(posts);
   return (
     <>
       {posts.map(

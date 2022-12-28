@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Navbar from 'scenes/navbar'
 const ProfilePage = () => {
   return (
-    <div>ProfilePage</div>
+    <div>
+      <Navbar/>
+      ProfilePage</div>
   )
 }
 
