@@ -6,6 +6,8 @@ import PostsWidget from "scenes/widgets/PostsWidget";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "@mui/material";
 import { Box } from "@mui/system";
+
+import AdvertWidget from "scenes/widgets/AdvertWidget";
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   const user = useSelector((state) => state.user);
@@ -28,7 +30,8 @@ const HomePage = () => {
           <PostsWidget userId={user._id}/>
         </Box>
 
-        {isNonMobileScreens && <Box flexBasis="26%"></Box>}
+        {isNonMobileScreens && <Box flexBasis="26%">
+          <AdvertWidget/></Box>}
       </div>
     </div>
   );
