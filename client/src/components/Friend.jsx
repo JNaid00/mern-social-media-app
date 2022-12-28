@@ -1,11 +1,11 @@
 import { PersonAddOutlined, PersonRemoveOutlined } from "@mui/icons-material";
-import { IconButton, Typography, useTheme } from "@mui/material";
+import { IconButton, Toolbar, Typography, useTheme } from "@mui/material";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setFriends } from "state";
 import UserImage from "./UserImage";
-
+import Tooltip from "@mui/material/Tooltip";
 const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -18,6 +18,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const primaryDark = palette.primary.dark;
   const main = palette.neutral.main;
   const medium = palette.neutral.medium;
+
   // console.log(friends);
   const isFriend = friends.find((friend) => friend._id === friendId);
 
@@ -72,9 +73,18 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
         sx={{ backgroundColor: primaryLight, p: "0.6rem" }}
       >
         {isFriend ? (
-          <PersonRemoveOutlined sx={{ color: primaryDark }} />
+          <Tooltip
+            title={<Typography fontSize={15}>Remove Friend</Typography>}
+            arrow
+            leaveDelay={200}
+            placement="top"
+          >
+            <PersonRemoveOutlined sx={{ color: primaryDark }} />
+          </Tooltip>
         ) : (
-          <PersonAddOutlined sx={{ color: primaryDark }} />
+          <Tooltip  title={<Typography fontSize={15}>Add Friend</Typography>} arrow leaveDelay={200} placement="top">
+            <PersonAddOutlined sx={{ color: primaryDark }} />
+          </Tooltip>
         )}
       </IconButton>
     </div>
