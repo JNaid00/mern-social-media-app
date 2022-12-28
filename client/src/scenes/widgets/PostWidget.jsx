@@ -21,6 +21,7 @@ const PostWidget = ({
   likes,
   comments,
 }) => {
+  // console.log(comments, " for ", name);
   const [isComments, setisComments] = useState(false);
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
@@ -81,7 +82,7 @@ const PostWidget = ({
           </div>
 
           <div className="flex justify-between items-center gap-1">
-            <IconButton onClick={() => setisComments(isComments)}>
+            <IconButton onClick={() => setisComments(!isComments)}>
               <ChatBubbleOutlineOutlined />
             </IconButton>
             <Typography>{comments.length}</Typography>

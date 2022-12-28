@@ -64,6 +64,7 @@ const UserWidget = ({ userId, picturePath }) => {
                   cursor: "pointer",
                 },
               }}
+              onClick={() => navigate(`/profile/${userId}`)}
             >
               {firstName} {lastName}
             </Typography>
