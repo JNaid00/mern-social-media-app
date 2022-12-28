@@ -8,6 +8,7 @@ import { useMediaQuery } from "@mui/material";
 import { Box } from "@mui/system";
 
 import AdvertWidget from "scenes/widgets/AdvertWidget";
+import FriendListWidget from "scenes/widgets/FriendListWidget";
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
   const user = useSelector((state) => state.user);
@@ -24,14 +25,17 @@ const HomePage = () => {
         <Box
           flexBasis={isNonMobileScreens ? "42%" : "55%"}
           mt={isNonMobileScreens ? undefined : "2rem"}
-         
         >
           <MyPostWidget picturePath={user.picturePath} />
-          <PostsWidget userId={user._id}/>
+          <PostsWidget userId={user._id} />
         </Box>
 
-        {isNonMobileScreens && <Box flexBasis="26%">
-          <AdvertWidget/></Box>}
+        {isNonMobileScreens && (
+          <Box flexBasis="26%">
+            <AdvertWidget />
+            <FriendListWidget userId={user._id} />
+          </Box>
+        )}
       </div>
     </div>
   );

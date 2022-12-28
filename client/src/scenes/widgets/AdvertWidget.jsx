@@ -10,17 +10,23 @@ const AdvertWidget = () => {
   return (
     <WidgetWrapper>
       <div className="flex justify-between items-center">
-        <Typography color={dark} variant="h5" fontWeight="500">Sponsored</Typography>
+        <Typography color={dark} variant="h5" fontWeight="500">
+          Sponsored
+        </Typography>
         <Typography color={medium}>Creat Ad</Typography>
       </div>
-      <img className="w-full h-auto max-h-[400px] rounded-xl my-3" src="http://localhost:3001/assets/info2.jpeg" alt="advert" />
-    
+      <img
+        className="w-full h-auto max-h-[400px] rounded-xl my-3"
+        src="http://localhost:3001/assets/info2.jpeg"
+        alt="advert"
+      />
+
       <div className="flex justify-between items-center">
-      <Typography color={main}>KFC</Typography>
+        <Typography color={main}>KFC</Typography>
         <Typography color={medium}>KFC.com</Typography>
       </div>
       <Typography color={medium} m="0.5rem 0">
-      No more simple cheeseburgers (although those are yummy too). 
+        No more simple cheeseburgers (although those are yummy too).
       </Typography>
     </WidgetWrapper>
   );
