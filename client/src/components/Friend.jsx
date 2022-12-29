@@ -68,25 +68,33 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
           </Typography>
         </div>
       </div>
-      <IconButton
-        onClick={() => patchFriend()}
-        sx={{ backgroundColor: primaryLight, p: "0.6rem" }}
-      >
-        {isFriend ? (
-          <Tooltip
-            title={<Typography fontSize={15}>Remove Friend</Typography>}
-            arrow
-            leaveDelay={200}
-            placement="top"
-          >
-            <PersonRemoveOutlined sx={{ color: primaryDark }} />
-          </Tooltip>
-        ) : (
-          <Tooltip  title={<Typography fontSize={15}>Add Friend</Typography>} arrow leaveDelay={200} placement="top">
-            <PersonAddOutlined sx={{ color: primaryDark }} />
-          </Tooltip>
-        )}
-      </IconButton>
+
+      {_id !== friendId && (
+        <IconButton
+          onClick={() => patchFriend()}
+          sx={{ backgroundColor: primaryLight, p: "0.6rem" }}
+        >
+          {isFriend ? (
+            <Tooltip
+              title={<Typography fontSize={15}>Remove Friend</Typography>}
+              arrow
+              leaveDelay={200}
+              placement="top"
+            >
+              <PersonRemoveOutlined sx={{ color: primaryDark }} />
+            </Tooltip>
+          ) : (
+            <Tooltip
+              title={<Typography fontSize={15}>Add Friend</Typography>}
+              arrow
+              leaveDelay={200}
+              placement="top"
+            >
+              <PersonAddOutlined sx={{ color: primaryDark }} />
+            </Tooltip>
+          )}
+        </IconButton>
+      )}
     </div>
   );
 };

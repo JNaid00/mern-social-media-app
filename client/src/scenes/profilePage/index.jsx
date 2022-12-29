@@ -42,13 +42,13 @@ const ProfilePage = () => {
       <div className={`w-full py-8 px-[6%] sm:flex block gap-8 justify-center`}>
         <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
           <UserWidget userId={user._id} picturePath={user.picturePath} />
-          <FriendListWidget userId={userId} homePage={false}/>
+          <FriendListWidget userId={userId} homePage={false} />
         </Box>
         <Box
           flexBasis={isNonMobileScreens ? "42%" : "55%"}
           mt={isNonMobileScreens ? undefined : "2rem"}
         >
-          {userId === _id && (<MyPostWidget picturePath={user.picturePath}/>)}
+          {userId === _id && <MyPostWidget picturePath={user.picturePath} />}
           <PostsWidget userId={userId} isProfile={true} />
         </Box>
       </div>
