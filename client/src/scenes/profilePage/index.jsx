@@ -16,7 +16,7 @@ const ProfilePage = () => {
   const { userId } = useParams();
   const token = useSelector((state) => state.token);
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
-
+  const { _id } = useSelector((state) => state.user);
   const getUser = async () => {
     const response = await fetch(`http://localhost:3001/users/${userId}`, {
       method: "GET",
@@ -42,12 +42,13 @@ const ProfilePage = () => {
       <div className={`w-full py-8 px-[6%] sm:flex block gap-8 justify-center`}>
         <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
           <UserWidget userId={user._id} picturePath={user.picturePath} />
-          <FriendListWidget userId={userId} />
+          <FriendListWidget userId={userId} homePage={false}/>
         </Box>
         <Box
           flexBasis={isNonMobileScreens ? "42%" : "55%"}
           mt={isNonMobileScreens ? undefined : "2rem"}
         >
+          {userId === _id && (<MyPostWidget picturePath={user.picturePath}/>)}
           <PostsWidget userId={userId} isProfile={true} />
         </Box>
       </div>

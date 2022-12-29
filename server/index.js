@@ -28,7 +28,7 @@ app.use(
     policy: "cross-origin",
   })
 );
-
+app.use(morgan("common"));
 app.use(
   bodyParser.json({
     limt: "30mb",

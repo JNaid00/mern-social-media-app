@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, useTheme } from "@mui/material";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useEffect } from "react";
@@ -7,12 +7,14 @@ import { setFriends } from "state";
 
 import Friend from "components/Friend";
 import { useNavigate } from "react-router-dom";
-const FriendListWidget = ({ userId }) => {
+const FriendListWidget = ({ userId , homePage = true}) => {
   const dispatch = useDispatch();
   const { palette } = useTheme();
   const token = useSelector((state) => state.token);
   const friends = useSelector((state) => state.user.friends);
+  const { _id } = useSelector((state) => state.user);
 
+  const [userFriends, setUserFriends] = useState([]);
   const getAllFriends = async () => {
     const response = await fetch(
       `http://localhost:3001/users/${userId}/friends`,
@@ -24,14 +26,19 @@ const FriendListWidget = ({ userId }) => {
       }
     );
     const data = await response.json();
-    dispatch(setFriends({ friends: data }));
+
+
+     
+      dispatch(setFriends({ friends: data }));
+  
+
   };
 
   useEffect(() => {
     getAllFriends();
   }, []);
 
-  console.log(friends);
+
   return (
     <WidgetWrapper>
       <Typography
