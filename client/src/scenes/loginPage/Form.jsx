@@ -14,7 +14,7 @@ import { json, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "state";
 import Dropzone from "react-dropzone";
-
+import * as api from "api/index.js";
 const registerScgeme = yup.object().shape({
   firstName: yup.string().required("required"),
   lastName: yup.string().required("required"),
@@ -73,26 +73,31 @@ const Form = () => {
     }
   };
   const login = async (values, onSubmitProps) => {
-    //console.log(process.env.BACKEND_URL)
-    const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
+    try {
+      const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-    const loggedIn = await loggedInResponse.json();
-
-    onSubmitProps.resetForm();
-    if (loggedIn) {
-      dispatch(
-        setLogin({
-          user: loggedIn.user,
-          token: loggedIn.token,
-        })
-      );
-      navigate("/home");
+        body: JSON.stringify(values),
+        // mode: "no-cors",
+      });
+      const loggedIn = await loggedInResponse.json();
+      // const loggedIn = await api.login(JSON.stringify(values));
+      // console.log(loggedIn);
+      onSubmitProps.resetForm();
+      if (loggedIn) {
+        dispatch(
+          setLogin({
+            user: loggedIn.user,
+            token: loggedIn.token,
+          })
+        );
+        navigate("/home");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   const handleFormSubmit = async (values, onSubmitProps) => {

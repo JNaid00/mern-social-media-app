@@ -58,6 +58,14 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+
+// app.use(function(req, res, next) {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+//   next();
+// });
+
 /* Routes with files*/
 app.post("/auth/register", upload.single("picture"), register);
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
@@ -66,6 +74,10 @@ app.post("/posts", verifyToken, upload.single("picture"), createPost);
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
+
+app.get("/", (req, res) => {
+  res.send("APP IS RUNNING");
+});
 
 const PORT = process.env.PORT || 6001;
 mongoose
@@ -80,3 +92,5 @@ mongoose
     // Post.insertMany(posts);
   })
   .catch((error) => console.log(`${error} did not connect`));
+
+export default app;

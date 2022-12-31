@@ -42,7 +42,12 @@ export const register = async (req, res) => {
 
 /* Login in */
 
-export const login = async (req, res) => {
+export const login = async (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  // res.setHeader('Access-Control-Allow-Credentials', true);
+  // res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+  console.log("Hello")
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email });

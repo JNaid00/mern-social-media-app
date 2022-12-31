@@ -13,7 +13,7 @@ const LoginPage = () => {
         }`}
       >
         <Typography fontWeight="bold" fontSize="32px" color="primary">
-          Sociopedia
+        Cyber Social
         </Typography>
       </div>
 
@@ -25,7 +25,7 @@ const LoginPage = () => {
         }`}
       >
         <Typography className="font-medium mb-6 text-center" variant="h3">
-          Welcome to Sociapedia, the Social Media for Sociopaths!
+          Welcome to Cyber Social, the Social Media for Everyone!
         </Typography>
         <Form />
       </div>

@@ -7,7 +7,7 @@ import { setFriends } from "state";
 
 import Friend from "components/Friend";
 import { useNavigate } from "react-router-dom";
-const FriendListWidget = ({ userId , homePage = true}) => {
+const FriendListWidget = ({ userId, homePage = true }) => {
   const dispatch = useDispatch();
   const { palette } = useTheme();
   const token = useSelector((state) => state.token);
@@ -27,17 +27,12 @@ const FriendListWidget = ({ userId , homePage = true}) => {
     );
     const data = await response.json();
 
-
-     
-      dispatch(setFriends({ friends: data }));
-  
-
+    dispatch(setFriends({ friends: data }));
   };
 
   useEffect(() => {
     getAllFriends();
   }, []);
-
 
   return (
     <WidgetWrapper>
@@ -50,15 +45,21 @@ const FriendListWidget = ({ userId , homePage = true}) => {
         Friend List
       </Typography>
       <div className="flex flex-col gap-6">
-        {friends.map((item, index) => (
-          <Friend
-            key={`${item._id}`}
-            friendId={item._id}
-            name={`${item.firstName} ${item.lastName}`}
-            subtitle={item.occupation}
-            userPicturePath={item.picturePath}
-          ></Friend>
-        ))}
+        {friends
+          .filter((item) => {
+            if (item._id != undefined) {
+              return item;
+            }
+          })
+          .map((item, index) => (
+            <Friend
+              key={`${item._id}`}
+              friendId={item._id}
+              name={`${item.firstName} ${item.lastName}`}
+              subtitle={item.occupation}
+              userPicturePath={item.picturePath}
+            ></Friend>
+          ))}
       </div>
     </WidgetWrapper>
   );
