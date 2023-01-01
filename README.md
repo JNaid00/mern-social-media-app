@@ -18,4 +18,9 @@ Making a post:
 https://user-images.githubusercontent.com/52546401/210178817-8a3c0a67-4635-4ba0-964e-75374379d051.mp4
 
 
+Chaning light/dark mode && viewing peoples profile pages:
+* Are able to switch between light and dark mode
+* Can view each persons profile page.
+
+https://user-images.githubusercontent.com/52546401/210179188-e86d9782-64cc-473f-8276-e009516d0d9a.mp4
 
