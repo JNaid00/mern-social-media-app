@@ -1,6 +1,10 @@
 # mern-social-media-app
 
-This website was created using the MERN stack, ie it utilizes MongoDB, Express, React and Node.
+This website was created using the MERN stack:
+ * MongoDB <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/512px-MongoDB_Logo.svg.png" alt="drawing" width="200"/>
+ * Express JS <img src="https://miro.medium.com/max/1400/1*XP-mZOrIqX7OsFInN2ngRQ.png" alt="drawing" width="200"/>
+ * React <img src="https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark.png" alt="drawing" width="200"/>
+ * Node <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/2560px-Node.js_logo.svg.png" alt="drawing" width="200"/>
 
 This website allows for login and logout functionality:
 
